@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - tickets-bmsitnm
+name: Build and deploy Node.js app to Azure Web App - Tickets-bmsitnm
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '24.x'
 
       - name: npm install, build, and test
         run: |
@@ -51,15 +51,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A38DBF9F1B4A40B69E01535D31178DC4 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9FF13AD9F62E4A7D857AB20166313775 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A1E8E2EF355840D3A7364754277B3AAB }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_45CF520AF5A34E16939968DF22B25C26 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4E1CDE6FC7E34E9F856BC32B407AAE89 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FE82A159EF65452F84774E97042D6428 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'tickets-bmsitnm'
+          app-name: 'Tickets-bmsitnm'
           slot-name: 'Production'
           package: .
           
