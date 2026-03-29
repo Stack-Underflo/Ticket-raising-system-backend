@@ -26,18 +26,18 @@ app.use(cors({
   origin: process.env.FRONTEND_URL || 'https://ticket-raising-system-frontend.vercel.app',
   credentials: true,
 }));
+app.set('trust proxy', 1);
 app.use(session({
-  secret:            process.env.SESSION_SECRET || 'dev_secret',
-  resave:            false,
+  secret: process.env.SESSION_SECRET || 'dev_secret',
+  resave: false,
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    maxAge:   8 * 60 * 60 * 1000,
-    secure:   true,       // required for HTTPS (Render + Vercel are both HTTPS)
-    sameSite: 'none',     // required to send cookies across different domains
-  },
+    maxAge: 8 * 60 * 60 * 1000,
+    secure: true,
+    sameSite: 'none'
+  }
 }));
-
 // ─── DATABASE CONNECTION ──────────────────────
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅  MongoDB connected'))
