@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 // ─── MIDDLEWARE ───────────────────────────────
 app.use(express.json());
 app.use(cors({
-  origin: process.env.ticket-raising-system-frontend.vercel.app,
+  origin: process.env.FRONTEND_URL || 'https://ticket-raising-system-frontend.vercel.app',
   credentials: true,
 }));
 app.use(session({
@@ -32,8 +32,9 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    maxAge:   8 * 60 * 60 * 1000,  // 8 hours
-    // secure: true  ← uncomment this when you deploy to HTTPS on Azure
+    maxAge:   8 * 60 * 60 * 1000,
+    secure:   true,       // required for HTTPS (Render + Vercel are both HTTPS)
+    sameSite: 'none',     // required to send cookies across different domains
   },
 }));
 
