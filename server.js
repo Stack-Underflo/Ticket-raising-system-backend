@@ -23,8 +23,8 @@ const PORT = process.env.PORT || 3000;
 // ─── MIDDLEWARE ───────────────────────────────
 app.use(express.json());
 app.use(cors({
-  origin:      process.env.FRONTEND_URL || 'http://127.0.0.1:5500',
-  credentials: true,   // needed so cookies travel with requests
+  origin: process.env.ticket-raising-system-frontend.vercel.app,
+  credentials: true,
 }));
 app.use(session({
   secret:            process.env.SESSION_SECRET || 'dev_secret',
