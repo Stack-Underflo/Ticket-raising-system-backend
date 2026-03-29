@@ -265,3 +265,7 @@ app.get('/api/admin/stats', requireAdmin, async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+mongoose.connection.on("connected", () => {
+  console.log("✅ MongoDB CONNECTED");
+});
